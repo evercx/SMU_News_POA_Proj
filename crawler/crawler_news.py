@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../')
+
 from config.database import get_database_dict_info
 from config.university_list import get_university_list
 import requests
@@ -28,7 +31,6 @@ def filter(doc):
         return "false"
 
     return "true"
-
 
 
 # 提取各种网页中的主体正文
