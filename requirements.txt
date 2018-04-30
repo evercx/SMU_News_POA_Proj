@@ -1,6 +1,4 @@
 requests==2.18.4
+jieba==0.39
+beautifulsoup4==4.6.0
 scikit_learn==0.19.1
-
-
-
-

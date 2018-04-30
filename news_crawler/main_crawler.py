@@ -1,5 +1,5 @@
 import requests
-
+from bs4 import BeautifulSoup
 
 from config.database import get_database_dict_info
 
