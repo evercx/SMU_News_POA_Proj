@@ -1,0 +1,7 @@
+
+
+/text_classification/dataset/*
+/text_classification/models/*
+
+.DS_Store
+
