@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from readability import Document
 import html2text
-
+import json
 
 MAX_PAGE_NUMBERS = 39
 
@@ -74,9 +74,6 @@ def get_website_body_from_html(url):
 
     return body
 
-# body  = get_website_body_from_html("http://souky.eol.cn/HomePage/takeinfo/73/14623.html")
-# body2 = get_website_body_from_html("http://gaokao.eol.cn/shang_hai/dongtai/201706/t20170621_1531727.shtml")
-# print(body)
 
 def request_baidu_news(university_name,start_page,end_page,university_abbr):
 
@@ -162,7 +159,25 @@ def save_newslist_to_db():
 
     print("新闻全部爬取完毕")
 
-save_newslist_to_db()
+# save_newslist_to_db()
+
+def save_newslist_into_file():
+
+    university_list = get_university_list()
+    for i in range(0,len(university_list)):
+
+        uni = university_list[i]
+        news_documents_list = request_baidu_news(uni["zh_name"],1,MAX_PAGE_NUMBERS,uni["en_name"])
+
+        news_path = "./news_result/" + uni["zh_name"] + ".json"
+        with open(news_path, 'w', encoding='utf-8') as json_file:
+            json.dump(news_documents_list, json_file, ensure_ascii=False)
+
+            print(uni["zh_name"],"的新闻列表保存成功")
+
+
+
+save_newslist_into_file()
 
 
 

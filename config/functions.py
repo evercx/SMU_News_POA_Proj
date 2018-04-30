@@ -1,6 +1,7 @@
 import os
 import pickle
 import jieba
+import json
 
 def get_news_category_config():
 
@@ -26,6 +27,13 @@ def get_news_sentiment_config():
         "count_vect_path": os.getcwd() + '/models/news_sentiment_count_vect.dat',
         "tfidf_path": os.getcwd() + '/models/news_sentiment_tfidf.dat'
     }
+
+
+
+def load_json_file(news_path):
+    with open(news_path,'r',encoding="utf-8") as json_file:
+        news_json = json.load(json_file)
+        return news_json
 
 
 def read_file(path):
