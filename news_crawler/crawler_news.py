@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from readability import Document
 import html2text
-import re
-import chardet
 
 
 MAX_PAGE_NUMBERS = 39
