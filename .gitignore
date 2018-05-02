@@ -1,7 +1,7 @@
 
 
 /text_classification/dataset/*
-
+/web/node_modules/
 
 .DS_Store
 

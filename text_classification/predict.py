@@ -17,7 +17,10 @@ def predict_news_category_and_sentiment(string):
 if __name__ == '__main__':
 
     string = "2017上海海事大学研究生入学考试简章"
-    # string = "本市举办“上海市第五届大学生模拟法庭竞赛“活动 - 滚动热点"
+    string = "上海海事大学一名教师春节在海南三亚海滩溺亡"
+    string2 = "上海海事大学14名学生期末考试作弊将受开除学籍等处分"
 
     result = predict_news_category_and_sentiment(string)
     print(result)
+
+    print(predict_news_category_and_sentiment(string2))

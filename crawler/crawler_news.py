@@ -179,7 +179,7 @@ def save_newslist_into_file():
 
 
 
-save_newslist_into_file()
+# save_newslist_into_file()
 
 
 

@@ -1,0 +1,5 @@
+
+
+$(function(){
+	alert(getQueryString("type"));
+})

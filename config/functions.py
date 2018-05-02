@@ -6,7 +6,6 @@ import json
 def get_news_category_config():
 
     dataset_path = os.path.join(os.path.abspath('.'),'dataset','news_category_dataset')
-    print("datasetpath: ",dataset_path)
 
     return {
             "categories": ["activity", "entrance", "social","study"],
@@ -83,3 +82,22 @@ def get_tfidf_model(text,count_vect_path,tfidf_path):
     X_new_tfidf = tfidf_transformer.transform(X_new_counts)
 
     return X_new_tfidf
+
+
+# 定义一个计算程序运行耗时的类
+class Timer:
+
+    def __init__(self):
+        self.__start = 0.0
+        self.__end = 0.0
+
+    def getStart(self):
+        self.__start = time.time()
+        return self
+
+    def getEnd(self):
+        self.__end = time.time()
+        return self
+
+    def printTime(self):
+        print("耗时为:",self.__end - self.__start)

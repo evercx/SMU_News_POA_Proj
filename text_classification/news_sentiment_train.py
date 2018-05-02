@@ -2,6 +2,8 @@ from sklearn.datasets import load_files
 from sklearn.feature_extraction.text import CountVectorizer,TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.externals import joblib
+import sys
+sys.path.append('../')
 from config.functions import *
 
 category_config = get_news_sentiment_config()
