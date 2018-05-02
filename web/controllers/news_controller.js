@@ -3,7 +3,7 @@
  */
 
 var mongoose = require('mongoose');
-var newsModel = require('../models/news');
+var newsModel = require('../js_models/news');
 
 exports.getNewsInfo = function(req,res){
 

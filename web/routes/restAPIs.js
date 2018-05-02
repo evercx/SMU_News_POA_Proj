@@ -5,9 +5,9 @@ var mongoose = require('mongoose');
 var restify = require('express-restify-mongoose');
 var ipConfig = require('../ipConfig');
 
-var collegesModel = require('../models/colleges');
-var newsNumberModel = require('../models/newsNumber');
-var newsModel = require('../models/news');
+var collegesModel = require('../js_models/colleges');
+var newsNumberModel = require('../js_models/newsNumber');
+var newsModel = require('../js_models/news');
 var newsController = require('../controllers/news_controller');
 var analyzeController  =require('../controllers/analyze_controller');
 

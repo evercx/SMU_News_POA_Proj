@@ -2,10 +2,12 @@ import os
 import pickle
 import jieba
 import json
+import time
 
 def get_news_category_config():
 
     dataset_path = os.path.join(os.path.abspath('.'),'dataset','news_category_dataset')
+
 
     return {
             "categories": ["activity", "entrance", "social","study"],

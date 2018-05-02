@@ -4,8 +4,11 @@
 
 var fs = require('fs');
 var exec = require('child_process').exec;
-var filePath = './python/process_onlineAnalyze.py';
-var command = 'python ' + filePath;
+var filePath = './python/online_analyze.py';
+
+var commandConfig = require('../command_config');
+
+var command = commandConfig.pythonCommand + filePath;
 
 exports.doTextAnalyze = function(req,res){
 
@@ -40,6 +43,9 @@ exports.doTextAnalyze = function(req,res){
                     }
                     if(stdout)
                     {
+
+                        console.log(stdout)
+                        console.log(typeof(stdout));
 
                         var obj = eval('(' + stdout+ ')');
 
