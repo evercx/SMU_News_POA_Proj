@@ -1,111 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c6ab240-c6a0-44c4-bf6b-731845e5071b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/error-16-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/error-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/error.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/info-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/info.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/iotlab-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/sum-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/yes-16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/img/yes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/models" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/wordbag" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db_operation/add_negative_news_from_old_db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db_operation/create_news_number_info.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db_operation/create_university_list.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db_operation/process_data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海中医药大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海交通大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海外国语大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海对外经贸大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海工程技术大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海师范大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海戏剧学院.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海海事大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海海洋大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海理工大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海电机学院.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海财经大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/上海音乐学院.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/东华大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/华东师范大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/华东政法大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/华东理工大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/同济大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_result/复旦大学.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/bin/www" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/controllers/analyze_controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/controllers/news_controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ipConfig.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/models/colleges.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/models/news.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/models/newsNumber.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/mongodb-shell.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/404.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/analyze_page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/college.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/css/home.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/css/news.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/css/pagination.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/detail_page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/home.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/home_page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/analyze_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/college.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/detail_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/home.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/home_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/axios.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/echarts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/echarts.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/jquery1.9.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/shine.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/vue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/lib/vue.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/news.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/js/statistics_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/news.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/public/statistics_page.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/app.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/mod_config.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/process_onlineAnalyze.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/python/text.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/routes/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/routes/restAPIs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/routes/users.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/schemas/colleges.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/schemas/news.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/schemas/newsNumber.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/views/error.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/views/index.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/views/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/models/news_category_count_vect.dat" afterPath="$PROJECT_DIR$/text_classification/models/news_category_count_vect.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/models/news_sentiment_count_vect.dat" afterPath="$PROJECT_DIR$/text_classification/models/news_sentiment_count_vect.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/models/news_sentiment_model.m" afterPath="$PROJECT_DIR$/text_classification/models/news_sentiment_model.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/models/news_sentiment_tfidf.dat" afterPath="$PROJECT_DIR$/text_classification/models/news_sentiment_tfidf.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.py" afterPath="$PROJECT_DIR$/config/database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/functions.py" afterPath="$PROJECT_DIR$/config/functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawler/crawler_news.py" afterPath="$PROJECT_DIR$/crawler/crawler_news.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/news_category_train.py" afterPath="$PROJECT_DIR$/text_classification/news_category_train.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/news_sentiment_train.py" afterPath="$PROJECT_DIR$/text_classification/news_sentiment_train.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_classification/predict.py" afterPath="$PROJECT_DIR$/text_classification/predict.py" />
-    </list>
+    <list default="true" id="5c6ab240-c6a0-44c4-bf6b-731845e5071b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +63,7 @@
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="105">
-                  <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+                  <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -436,14 +332,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-126" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39324728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27706057" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27706057" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15495208" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -789,7 +684,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
