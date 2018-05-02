@@ -44,8 +44,8 @@ exports.doTextAnalyze = function(req,res){
                     if(stdout)
                     {
 
-                        console.log(stdout)
-                        console.log(typeof(stdout));
+                        // console.log(stdout)
+                        // console.log(typeof(stdout));
 
                         var obj = eval('(' + stdout+ ')');
 
