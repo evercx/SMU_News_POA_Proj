@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../')
 from text_classification.news_category_train import predict_news_category
 from text_classification.news_sentiment_train import predict_news_sentiment
 
