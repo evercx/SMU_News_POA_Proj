@@ -8,7 +8,7 @@
 
 
 var mongoose = require('mongoose');
-var newsSchema = require('../schemas/news');
-var newsModel = mongoose.model('news',newsSchema,'newslist');
+var influenceSchema = require('../schemas/influence');
+var influenceModel = mongoose.model('influence',influenceSchema,'influence');
 
-module.exports = newsModel;
+module.exports = influenceModel;

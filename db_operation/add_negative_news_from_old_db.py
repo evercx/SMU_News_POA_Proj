@@ -61,6 +61,43 @@ def add_negative_news_from_old_db():
 
 
 
+
+# def backup_db_to_aliyun_db():
+#
+#     # 获取学校列表，数据库配置信息
+#     university_list = get_university_list()
+#     db_config = get_database_dict_info()
+#
+#     #建立数据库连接
+#     new_conn = MongoClient(db_config["host"],db_config["port"])
+#
+#     old_conn = MongoClient("121.42.236.250",27034)
+#
+#
+#     new_news_cursor = new_conn.NewsPOA["news"].find()
+#     new_newsnumber_cursor = new_conn.NewsPOA["newsNumber"].find()
+#     new_unilist_cursor = new_conn.NewsPOA["universitylist"].find()
+#
+#     new_news_list = [item for item in new_news_cursor]
+#     new_newsnumber_list = [item for item in new_newsnumber_cursor]
+#     new_unilist_list = [item for item in new_unilist_cursor]
+#
+#     old_conn.NewsPOA["news"].insert(new_news_list)
+#     old_conn.NewsPOA["newsNumber"].insert(new_newsnumber_list)
+#     old_conn.NewsPOA["universitylist"].insert(new_unilist_list)
+#
+#     print("保存完毕")
+#
+#
+#     new_conn.close()
+#     old_conn.close()
+
+
 if __name__ == '__main__':
-    add_negative_news_from_old_db()
+
+    print("hello world")
+    # backup_db_to_aliyun_db()
+
+
+
 

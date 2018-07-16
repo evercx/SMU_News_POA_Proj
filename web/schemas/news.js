@@ -28,6 +28,9 @@ var newsSchema = new mongoose.Schema({
     },
     abbr:{     //学校的英文缩写
         type:String
+    },
+    media:{
+        type:String
     }
 });
 

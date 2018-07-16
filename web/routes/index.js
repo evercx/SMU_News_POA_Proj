@@ -26,6 +26,11 @@ router.get('/news', function(req, res, next) {
   res.sendFile(path.resolve('./','public/news.html'));
 });
 
+/* GET report page. */
+router.get('/report', function(req, res, next) {
+    res.sendFile(path.resolve('./','public/report_page.html'));
+});
+
 
 
 /* GET 404 page. */

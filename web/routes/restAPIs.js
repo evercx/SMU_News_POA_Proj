@@ -9,6 +9,7 @@ var collegesModel = require('../js_models/colleges');
 var newsNumberModel = require('../js_models/newsNumber');
 var newsModel = require('../js_models/news');
 var newsController = require('../controllers/news_controller');
+var report_controller = require('../controllers/report_controller');
 var analyzeController  =require('../controllers/analyze_controller');
 
 mongoose.connect(ipConfig.mongodb);
@@ -26,7 +27,8 @@ router.use('/api/v1/*',function(req,res,next){
 
 router.get('/api/news',newsController.getNewsInfo);
 router.post('/api/analyze',analyzeController.doTextAnalyze);
-
+router.get('/api/sentimentrank',report_controller.mediaSentimentRank);
+router.get('/api/mediainfluence',report_controller.mediaInfluence);
 
 restify.serve(router,collegesModel);
 restify.serve(router,newsNumberModel);

@@ -5,7 +5,7 @@ from config.functions import load_json_file,seg_chinese_text
 from config.university_list import get_university_list
 from config.database import get_database_dict_info
 from text_classification.predict import predict_news_category_and_sentiment
-from pymongo import MongoClient
+from pymongo impor MongoClient
 
 
 def create_news_numbers_info():
