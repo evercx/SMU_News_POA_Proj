@@ -547,7 +547,7 @@ var chartsApp = new Vue({
 });
 
 formApp.initSettings();
-chartsApp.initCharts();
+//chartsApp.initCharts();
 
 
 

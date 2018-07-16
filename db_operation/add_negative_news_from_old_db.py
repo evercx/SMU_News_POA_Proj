@@ -28,7 +28,9 @@ def add_negative_news_from_old_db():
     db_config = get_database_dict_info()
 
     #建立数据库连接
-    new_conn = MongoClient(db_config["host"],db_config["port"])
+    # new_conn = MongoClient(db_config["host"],db_config["port"])
+
+    new_conn = MongoClient("121.42.236.250", 27034)
 
     old_conn = MongoClient("121.42.236.250",27034)
 
@@ -36,7 +38,7 @@ def add_negative_news_from_old_db():
 
     old_neg_news_list = [ item for item in old_neg_news_cursor]
 
-    new_neg_news_cursor = new_conn.NewsPOA["news"].find({"sentiment": "-1"})
+    new_neg_news_cursor = new_conn.NewsPOA["newslist"].find({"sentiment": "-1"})
 
     new_neg_news_list = [item for item in new_neg_news_cursor]
 
@@ -50,9 +52,10 @@ def add_negative_news_from_old_db():
         if judge_url_in_list(new_neg_news_list,current_news_url) == False:
 
             current_news["media"] = "unkown"
+            current_news["ranking"] = "300"
             add_neg_list.append(current_news)
 
-    new_conn.NewsPOA["news"].insert(add_neg_list)
+    new_conn.NewsPOA["newslist"].insert(add_neg_list)
 
     create_news_numbers_info()
 
@@ -95,8 +98,7 @@ def add_negative_news_from_old_db():
 
 if __name__ == '__main__':
 
-    print("hello world")
-    # backup_db_to_aliyun_db()
+    add_negative_news_from_old_db()
 
 
 

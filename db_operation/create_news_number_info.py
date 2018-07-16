@@ -5,7 +5,7 @@ from config.functions import load_json_file,seg_chinese_text
 from config.university_list import get_university_list
 from config.database import get_database_dict_info
 from text_classification.predict import predict_news_category_and_sentiment
-from pymongo impor MongoClient
+from pymongo import MongoClient
 
 
 def create_news_numbers_info():
@@ -15,7 +15,7 @@ def create_news_numbers_info():
     db_config = get_database_dict_info()
 
     #建立数据库连接
-    conn = MongoClient(db_config["host"],db_config["port"])
+    conn = MongoClient("121.42.236.250", 27034)
 
     NewsPOA = conn.NewsPOA
     news_number_list = []

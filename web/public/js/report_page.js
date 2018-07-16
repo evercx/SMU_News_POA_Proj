@@ -111,7 +111,7 @@ var sideListApp = new Vue({
             this.currentUniversity = universityName;
             universityTitleApp.initTitle(this.currentUniversity);//初始化标题幕布
             formApp.initSettings();//初始化搜索框设置
-            chartsApp.initCharts();//初始化图表数据
+            chartsApp.initCharts(universityName);//初始化图表数据
         }
     },
     computed:{
@@ -256,14 +256,18 @@ var chartsApp = new Vue({
             entranceNumber:[0,0,0,0],
             activityNumber:[0,0,0,0],
             studyNumber:[0,0,0,0]
-        }
+        },
+        reportTitle:"舆情分析报告"
     },
     methods: {
-        initCharts(){
-
+        initCharts(universityName){
             var _self = this;
+        	_self.reportTitle = universityTitleApp.title + "的舆情分析报告";
             _self.createNewsProportionChart();
             _self.createSentiementProportionChart();
+            _self.createSentimentMediaRankChart();
+            _self.createMediaInfluenceRank();
+
         },
 
         createNewsProportionChart(){
@@ -471,10 +475,301 @@ var chartsApp = new Vue({
             });
         },
 
+        createSentimentMediaRankChart(){
+
+            var _self = this;
+            var option = {
+
+
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ["a","b","c"],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name : "正面新闻量",
+                        type : 'bar',
+                        barWidth : '60%',
+                        data : [0,0,0]
+                    }
+                ]
+            };
+            var postiveMediaRankChart = echarts.init(document.getElementById('postiveMediaRank'),'shine');
+            var neuMediaRankChart = echarts.init(document.getElementById('neuMediaRank'),'shine');
+            var negMediaRankChart = echarts.init(document.getElementById('negMediaRank'),'shine');
+            postiveMediaRankChart.setOption(option);
+            neuMediaRankChart.setOption(option);
+            negMediaRankChart.setOption(option);
+            axios({
+                method: 'get',
+                url: '/api/sentimentrank',
+				headers:{
+                	"Content-type":"applicatoin/json"
+				},
+                params:{
+
+                        "Uname":universityTitleApp.title,
+						"sentiment":"1",
+						"limit":5
+
+                }
+            }).then(function(res){
+				var mediaList = [];
+                var mediaTotalList = [];
+
+                for(var i = 0; i < res.data.length;i++){
+                	mediaList.push(res.data[i]["_id"]);
+                	mediaTotalList.push(res.data[i]["total"]);
+				}
+                postiveMediaRankChart.setOption({
+                    color: ['#66CD00'],
+                    title:{
+                        text:'报道正面新闻的媒体排名',
+                        x:"center",
+                        textStyle:{
+                            color:"#ff6600"
+                        }
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : mediaList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+
+                    series : [
+                        {
+                            name : "正面新闻量",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : mediaTotalList
+                        }
+                    ]
+                })
+            });
+
+            axios({
+                method: 'get',
+                url: '/api/sentimentrank',
+                headers:{
+                    "Content-type":"applicatoin/json"
+                },
+                params:{
+
+                    "Uname":universityTitleApp.title,
+                    "sentiment":"0",
+                    "limit":5
+
+                }
+            }).then(function(res){
+                var mediaList = [];
+                var mediaTotalList = [];
+
+                for(var i = 0; i < res.data.length;i++){
+                    mediaList.push(res.data[i]["_id"]);
+                    mediaTotalList.push(res.data[i]["total"]);
+                }
+                neuMediaRankChart.setOption({
+                    color: ['#7EC0EE'],
+                    title:{
+                        text:'报道中性新闻的媒体排名',
+                        x:"center",
+                        textStyle:{
+                            color:"#ff6600"
+                        }
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : mediaList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+
+                    series : [
+                        {
+                            name : "中性新闻量",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : mediaTotalList
+                        }
+                    ]
+                })
+            });
+
+            axios({
+                method: 'get',
+                url: '/api/sentimentrank',
+                headers:{
+                    "Content-type":"applicatoin/json"
+                },
+                params:{
+
+                    "Uname":universityTitleApp.title,
+                    "sentiment":"-1",
+                    "limit":5
+
+                }
+            }).then(function(res){
+                var mediaList = [];
+                var mediaTotalList = [];
+
+                for(var i = 0; i < res.data.length;i++){
+                    mediaList.push(res.data[i]["_id"]);
+                    mediaTotalList.push(res.data[i]["total"]);
+                }
+                negMediaRankChart.setOption({
+					color:["#FF6347"],
+                    title:{
+                        text:'报道负面新闻的媒体排名',
+                        x:"center",
+                        textStyle:{
+                            color:"#ff6600"
+                        }
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : mediaList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name : "负面新闻量",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : mediaTotalList
+                        }
+                    ]
+                })
+            });
+        },
+
+        createMediaInfluenceRank(){
+            var _self = this;
+            var option = {
+
+                color: ['#CD0000'],
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ["a","b","c"],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name : "正面新闻量",
+                        type : 'bar',
+                        barWidth : '60%',
+                        data : [0,0,0]
+                    }
+                ]
+            };
+            var mediaInfluenceRankChart = echarts.init(document.getElementById('mediaInfluenceRank'),'shine');
+            mediaInfluenceRankChart.setOption(option);
+
+            axios({
+                method: 'get',
+                url: '/api/mediainfluence',
+                headers:{
+                    "Content-type":"applicatoin/json"
+                },
+                params:{
+                    "Uname":universityTitleApp.title,
+                    "limit":5
+                }
+            }).then(function(res){
+                var mediaList = [];
+                var mediaScoreList = [];
+
+                for(var i = 0; i < res.data.length;i++){
+                    mediaList.push(res.data[i]["media"]);
+                    mediaScoreList.push(res.data[i]["score"]);
+                }
+                mediaInfluenceRankChart.setOption({
+                    title:{
+                        text:'媒体扩散的影响力排名',
+                        x:"center",
+                        textStyle:{
+                            color:"#ff6600"
+                        }
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : mediaList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+
+                    series : [
+                        {
+                            name : "影响力分数",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : mediaScoreList
+                        }
+                    ]
+                })
+            });
+
+		}
     }
 });
 
-formApp.initSettings();
+// formApp.initSettings();
 chartsApp.initCharts();
 
 

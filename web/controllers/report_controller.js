@@ -11,17 +11,18 @@ var influenceModel = require('../js_models/influence');
 var mediaSentimentRank = function(req,res){
 
     var query = {};
-    var limit = req.query.limit || 10;
+    var limit = req.query.limit || 5;
     query.sentiment = req.query.sentiment || "1";
-    query.Uname = req.query.uname || "上海海事大学";
+    query.Uname = req.query.Uname || "上海海事大学";
     query.Uname = decodeURI(query.Uname);
     limit = parseInt(limit);
+
 
     // if(decodeURI(req.query.uname))
     //     query.Uname = decodeURI(req.query.uname);
     // else query.Uname = "上海海事大学";
 
-    console.log(query);
+    //console.log(query);
     // 聚合分组查询
     newsModel.aggregate(
         [
@@ -55,11 +56,12 @@ function compare(property){
 var mediaInfluence_mapreduce = function(req,res){
 
     var query = {};
-    var limit = req.query.limit || 10;
+    var limit = req.query.limit || 6;
     query.sentiment = req.query.sentiment || "1";
     query.Uname = req.query.uname || "上海海事大学";
     query.Uname = decodeURI(query.Uname);
     limit = parseInt(limit);
+    console.log(limit);
 
     var mapReductOption = {};
 
@@ -108,10 +110,11 @@ var mediaInfluence = function(req,res){
     var query = {};
     var limit = req.query.limit || 5;
     //query.sentiment = req.query.sentiment || "1";
-    query.Uname = req.query.uname || "上海海事大学";
+    query.Uname = req.query.Uname || "上海海事大学";
     query.Uname = decodeURI(query.Uname);
 
     limit = parseInt(limit);
+    console.log(limit);
 
 
     influenceModel.find(query,null,{sort:{"score":-1},limit:limit},function(err,results){

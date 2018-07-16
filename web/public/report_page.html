@@ -85,19 +85,31 @@
 
 					<div class="container" id="chartsApp">
 						<div class="page-header" >
-							<h2 style="color: #4285F4">舆情分析报告</h2>
+							<h2 style="color: #4285F4" v-text="reportTitle"></h2>
 						</div>
 
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3" id="newsProportion" style="width: 600px;height:400px;"></div>
+							<div class="col-md-3"></div>
+							<div class="col-md-3" id="newsProportion" style="width: 500px;height:350px;"></div>
 						</div>
 						<hr>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3" id="sentimentProportion" style="width: 600px;height:400px;"></div>
+							<div class="col-md-3"></div>
+							<div class="col-md-3" id="sentimentProportion" style="width: 500px;height:350px;"></div>
+						</div>
+
+						<hr>
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-3" id="mediaInfluenceRank" style="width: 500px;height:350px;"></div>
 						</div>
 						<hr>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-2" id="postiveMediaRank" style="width: 350px;height:250px;"></div>
+							<div class="col-md-2" id="neuMediaRank" style="width: 350px;height:250px;"></div>
+							<div class="col-md-2" id="negMediaRank" style="width: 350px;height:250px;"></div>
+						</div>
 					</div>
 
 				</div><!--/row-->

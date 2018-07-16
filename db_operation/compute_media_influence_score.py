@@ -18,6 +18,7 @@ def compute_score():
     conn = MongoClient("121.42.236.250",27034)
 
     NewsPOA = conn.NewsPOA
+    NewsPOA["influence"].drop()
 
     for uni in university_list:
         uni_name = uni['zh_name']
