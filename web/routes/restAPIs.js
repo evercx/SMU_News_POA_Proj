@@ -29,6 +29,8 @@ router.get('/api/news',newsController.getNewsInfo);
 router.post('/api/analyze',analyzeController.doTextAnalyze);
 router.get('/api/sentimentrank',report_controller.mediaSentimentRank);
 router.get('/api/mediainfluence',report_controller.mediaInfluence);
+router.get('/api/medias', report_controller.medias);
+router.get('/api/universityrank', report_controller.universityRankOfOneMedia);
 
 restify.serve(router,collegesModel);
 restify.serve(router,newsNumberModel);

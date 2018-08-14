@@ -1,3 +1,93 @@
+//这个柱状图用得很多,所以重复的部分整合一下
+function getEmptyBarChartInstance(elementId){
+    var option = {
+        color: ['#CD0000'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ["a","b","c"],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name : "正面新闻量",
+                type : 'bar',
+                barWidth : '60%',
+                data : [0,0,0]
+            }
+        ]
+    };
+    var barChart = echarts.init(document.getElementById(elementId),'shine');
+    barChart.setOption(option);  
+    return barChart;  
+}
+
+
+
+function changeActiveStatusByUniversityName(list,name,status){
+
+    if(status){
+        for(i in list){
+            if(list[i].isActive === true){
+                list[i].isActive = false
+            }
+        }
+        for(i in list){
+
+            if(list[i].name === name){
+                console.log(list[i])
+                list[i].isActive = status
+                console.log(list[i])
+            }
+        }
+    }
+}
+
+
+
+//将对象参数转换为url参数
+var _paramsEncode = function(param, key, encode) {
+    if(param == null) return '';
+    var paramStr = '';
+    var t = typeof (param);
+    if (t == 'string' || t == 'number' || t == 'boolean') {
+        paramStr += '&' + key + '=' + ((encode==null||encode) ? encodeURIComponent(param) : param);
+    } else {
+        for (let i in param) {
+        let k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
+        paramStr += _paramsEncode(param[i], k, encode);
+        }
+    }
+    return paramStr;
+};
+
+var paramsEndoce = function(param, key, encode) {
+    return "?" + _paramsEncode(param, key, encode).substr(1)
+}
+
+
+
+
 //侧边栏的Vue实例
 var sideListApp = new Vue({
     el:"#sideBar",
@@ -106,12 +196,13 @@ var sideListApp = new Vue({
         currentUniversity:"上海海事大学"
     },
     methods:{
-        selectUniversity:function(universityName){
+        selectUniversity: function(universityName){
+
             changeActiveStatusByUniversityName(this.universityList,universityName,true);
             this.currentUniversity = universityName;
             universityTitleApp.initTitle(this.currentUniversity);//初始化标题幕布
-            formApp.initSettings();//初始化搜索框设置
-            chartsApp.initCharts(universityName);//初始化图表数据
+            // formApp.initSettings();//初始化搜索框设置
+            chartsApp.initCharts();//初始化图表数据
         }
     },
     computed:{
@@ -226,27 +317,6 @@ var formApp = new Vue({
 
 
 
-function changeActiveStatusByUniversityName(list,name,status){
-
-    if(status){
-        for(i in list){
-            if(list[i].isActive === true){
-                list[i].isActive = false
-            }
-        }
-        for(i in list){
-
-            if(list[i].name === name){
-                console.log(list[i])
-                list[i].isActive = status
-                console.log(list[i])
-            }
-        }
-    }
-}
-
-
-
 //新闻图表的Vue实例
 var chartsApp = new Vue({
     el:"#chartsApp",
@@ -260,7 +330,7 @@ var chartsApp = new Vue({
         reportTitle:"舆情分析报告"
     },
     methods: {
-        initCharts(universityName){
+        initCharts(){
             var _self = this;
         	_self.reportTitle = universityTitleApp.title + "的舆情分析报告";
             _self.createNewsProportionChart();
@@ -342,6 +412,7 @@ var chartsApp = new Vue({
                 })
             });
         },
+
         createSentiementProportionChart(){
 
             var _self = this;
@@ -476,64 +547,44 @@ var chartsApp = new Vue({
         },
 
         createSentimentMediaRankChart(){
-
             var _self = this;
-            var option = {
-
-
-                tooltip : {
-                    trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis : [
-                    {
-                        type : 'category',
-                        data : ["a","b","c"],
-                        axisTick: {
-                            alignWithLabel: true
-                        }
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name : "正面新闻量",
-                        type : 'bar',
-                        barWidth : '60%',
-                        data : [0,0,0]
-                    }
-                ]
-            };
-            var postiveMediaRankChart = echarts.init(document.getElementById('postiveMediaRank'),'shine');
-            var neuMediaRankChart = echarts.init(document.getElementById('neuMediaRank'),'shine');
-            var negMediaRankChart = echarts.init(document.getElementById('negMediaRank'),'shine');
-            postiveMediaRankChart.setOption(option);
-            neuMediaRankChart.setOption(option);
-            negMediaRankChart.setOption(option);
+            var posMediaRankChart = getEmptyBarChartInstance('posMediaRank');
+            var neuMediaRankChart = getEmptyBarChartInstance('neuMediaRank');
+            var negMediaRankChart = getEmptyBarChartInstance('negMediaRank');
+            posMediaRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": params.name,
+                    "Uname": sideListApp.currentUniversity,
+                    "sentiment": "1"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+            neuMediaRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": params.name,
+                    "Uname": sideListApp.currentUniversity,
+                    "sentiment": "0"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+            negMediaRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": params.name,
+                    "Uname": sideListApp.currentUniversity,
+                    "sentiment": "-1"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
             axios({
                 method: 'get',
                 url: '/api/sentimentrank',
 				headers:{
-                	"Content-type":"applicatoin/json"
+                	"Content-type":"application/json"
 				},
                 params:{
-
-                        "Uname":universityTitleApp.title,
-						"sentiment":"1",
-						"limit":5
-
+                    "Uname":universityTitleApp.title,
+					"sentiment":"1",
+					"limit":5
                 }
             }).then(function(res){
 				var mediaList = [];
@@ -543,7 +594,7 @@ var chartsApp = new Vue({
                 	mediaList.push(res.data[i]["_id"]);
                 	mediaTotalList.push(res.data[i]["total"]);
 				}
-                postiveMediaRankChart.setOption({
+                posMediaRankChart.setOption({
                     color: ['#66CD00'],
                     title:{
                         text:'报道正面新闻的媒体排名',
@@ -577,14 +628,12 @@ var chartsApp = new Vue({
                 method: 'get',
                 url: '/api/sentimentrank',
                 headers:{
-                    "Content-type":"applicatoin/json"
+                    "Content-type":"application/json"
                 },
                 params:{
-
                     "Uname":universityTitleApp.title,
                     "sentiment":"0",
                     "limit":5
-
                 }
             }).then(function(res){
                 var mediaList = [];
@@ -628,14 +677,12 @@ var chartsApp = new Vue({
                 method: 'get',
                 url: '/api/sentimentrank',
                 headers:{
-                    "Content-type":"applicatoin/json"
+                    "Content-type":"application/json"
                 },
                 params:{
-
                     "Uname":universityTitleApp.title,
                     "sentiment":"-1",
                     "limit":5
-
                 }
             }).then(function(res){
                 var mediaList = [];
@@ -677,46 +724,16 @@ var chartsApp = new Vue({
 
         createMediaInfluenceRank(){
             var _self = this;
-            var option = {
-
-                color: ['#CD0000'],
-                tooltip : {
-                    trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis : [
-                    {
-                        type : 'category',
-                        data : ["a","b","c"],
-                        axisTick: {
-                            alignWithLabel: true
-                        }
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name : "正面新闻量",
-                        type : 'bar',
-                        barWidth : '60%',
-                        data : [0,0,0]
-                    }
-                ]
-            };
-            var mediaInfluenceRankChart = echarts.init(document.getElementById('mediaInfluenceRank'),'shine');
-            mediaInfluenceRankChart.setOption(option);
+            var mediaInfluenceRankChart = getEmptyBarChartInstance('mediaInfluenceRank');
+            
+            mediaInfluenceRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": params.name,
+                    "Uname": sideListApp.currentUniversity,
+                    "sentiment": "~"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
 
             axios({
                 method: 'get',
@@ -774,8 +791,403 @@ chartsApp.initCharts();
 
 
 
+///////////////////////////////////////////////////////////////
+// additional report (report for each media)
+///////////////////////////////////////////////////////////////
 
 
+//侧边栏(媒体)的Vue实例
+var editableSelectApp = new Vue({
+    el:"#editableSelect",
+    data:{
+        mediaList:[],
+        currentMedia:""
+    },
+    created: function(){
+        var _self = this;
+        axios({
+            method: 'get',
+            url: '/api/medias',
+        }).then(function(res){
+            _self.currentMedia = res.data[0]["_id"];
+            _self.mediaList = res.data.reverse();
+            mediaChartsApp.initCharts();
+        });
+    },
+    methods:{
+        selectedMedia: function(){
+            var _self = this;
+            mediaChartsApp.initCharts();
+        }
+    },
+    computed:{
+
+    }
+});
+
+
+//媒体图表的Vue实例
+var mediaChartsApp = new Vue({
+    el: "#mediaChartsApp",
+    data: {
+        reportTitleMedia: "",
+    },
+    methods: {
+        initCharts(){
+            var _self = this;
+            _self.reportTitleMedia = editableSelectApp.currentMedia + '对各学校的新闻报道排名';
+            _self.createTotalUniversityRankChart();
+            _self.createUniversityRankChart();
+        },
+
+        createTotalUniversityRankChart(){
+            var _self = this;
+            var totalUniversityRankChart = getEmptyBarChartInstance('totalUniversityRank');
+            totalUniversityRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": params.name,
+                    "sentiment": "~"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                var universityList = [];
+                var reportCountList = [];
+                var titleLink = location.origin + "/report_detail" + paramsEndoce({
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": "上海海事大学",
+                    "sentiment": "~"
+                });
+
+                for(var i = 0; i < res.data.length;i++){
+                    universityList.push(res.data[i]["_id"]);
+                    reportCountList.push(res.data[i]["total"]);
+                }
+                
+                totalUniversityRankChart.setOption({
+                    title:{
+                        x:"center",
+                        textStyle:{
+                            color:"#ff6600"
+                        },
+                        link: [titleLink]
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : universityList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+
+                    series : [
+                        {
+                            name : "综合新闻个数",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : reportCountList
+                        }
+                    ]
+                })
+            });
+
+            // smu
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "Uname": "上海海事大学",
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                totalUniversityRankChart.setOption({
+                    title:{
+                        text: editableSelectApp.currentMedia + '--综合新闻数量排名'
+                            + '\n' + '(上海海事大学共' + (res.data[0] ? res.data[0].total : '0') + '条)',
+                    },
+                })
+            });
+        },
+
+        createUniversityRankChart(){
+            var _self = this;
+            var posUniversityRankChart = getEmptyBarChartInstance('posUniversityRank');
+            var neuUniversityRankChart = getEmptyBarChartInstance('neuUniversityRank');
+            var negUniversityRankChart = getEmptyBarChartInstance('negUniversityRank');
+            posUniversityRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": params.name,
+                    "sentiment": "1"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+            neuUniversityRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": params.name,
+                    "sentiment": "0"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+            negUniversityRankChart.on('click', function(params){
+                var targetParams = {
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": params.name,
+                    "sentiment": "-1"
+                }
+                location.href = location.origin + "/report_detail" + paramsEndoce(targetParams)
+            })
+
+            // positive
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "sentiment": 1,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                var universityList = [];
+                var positiveCountList = [];
+                var titleLink = location.origin + "/report_detail" + paramsEndoce({
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": "上海海事大学",
+                    "sentiment": "1"
+                });
+
+                for(var i = 0; i < res.data.length;i++){
+                    universityList.push(res.data[i]["_id"]);
+                    positiveCountList.push(res.data[i]["total"]);
+                }
+                posUniversityRankChart.setOption({
+                    color: ["#66CD00"],
+                    title:{
+                        x:"center",
+                        textStyle:{
+                            color:"#FF6600"
+                        },
+                        link: [titleLink]
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : universityList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name : "正面新闻个数",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : positiveCountList
+                        }
+                    ]
+                })
+            });
+
+            // positive-smu
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "Uname": "上海海事大学",
+                    "sentiment": 1,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                posUniversityRankChart.setOption({
+                    title:{
+                        text: editableSelectApp.currentMedia + '--正面新闻数量排名'
+                            + '\n' + '(上海海事大学共' + (res.data[0] ? res.data[0].total : '0') + '条)',
+                    },
+                });
+            });
+
+            // neutral
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "sentiment": 0,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                var universityList = [];
+                var neutralCountList = [];
+                var titleLink = location.origin + "/report_detail" + paramsEndoce({
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": "上海海事大学",
+                    "sentiment": "0"
+                });
+
+                for(var i = 0; i < res.data.length;i++){
+                    universityList.push(res.data[i]["_id"]);
+                    neutralCountList.push(res.data[i]["total"]);
+                }
+                neuUniversityRankChart.setOption({
+                    color: ["#7EC0EE"],
+                    title:{
+                        x:"center",
+                        textStyle:{
+                            color:"#FF6600"
+                        },
+                        link: [titleLink]
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : universityList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name : "中性新闻个数",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : neutralCountList
+                        }
+                    ]
+                })
+            });
+
+            // neutral-smu
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "Uname": "上海海事大学",
+                    "sentiment": 0,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                neuUniversityRankChart.setOption({
+                    title:{
+                        text: editableSelectApp.currentMedia + '--中性新闻数量排名'
+                            + '\n' + '(上海海事大学共' + (res.data[0] ? res.data[0].total : '0') + '条)',
+                    },
+                });
+            });
+
+            // negative
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "sentiment": -1,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                var universityList = [];
+                var negativeCountList = [];
+                var titleLink = location.origin + "/report_detail" + paramsEndoce({
+                    "media": editableSelectApp.currentMedia,
+                    "Uname": "上海海事大学",
+                    "sentiment": "-1"
+                });
+
+                for(var i = 0; i < res.data.length;i++){
+                    universityList.push(res.data[i]["_id"]);
+                    negativeCountList.push(res.data[i]["total"]);
+                }
+                negUniversityRankChart.setOption({
+                    color: ["#FF6347"],
+                    title:{
+                        x:"center",
+                        textStyle:{
+                            color:"#FF6600"
+                        },
+                        link: [titleLink]
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : universityList,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name : "负面新闻个数",
+                            type : 'bar',
+                            barWidth : '60%',
+                            data : negativeCountList
+                        }
+                    ]
+                })
+            });
+
+            // negative-smu
+            axios({
+                method: 'get',
+                url: '/api/universityrank',
+                headers:{
+                    "Content-type":"application/json"
+                },
+                params:{
+                    "Uname": "上海海事大学",
+                    "sentiment": -1,
+                    "media": editableSelectApp.currentMedia,
+                    "limit": 5
+                }
+            }).then(function(res){
+                negUniversityRankChart.setOption({
+                    title:{
+                        text: editableSelectApp.currentMedia + '--负面新闻数量排名'
+                            + '\n' + '(上海海事大学共' + (res.data[0] ? res.data[0].total : '0') + '条)',
+                    },
+                });
+            });
+        }
+
+    }
+})
 
 
 

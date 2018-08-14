@@ -31,6 +31,10 @@ router.get('/report', function(req, res, next) {
     res.sendFile(path.resolve('./','public/report_page.html'));
 });
 
+/* GET report_detail page. */
+router.get('/report_detail', function(req, res, next) {
+  res.sendFile(path.resolve('./','public/report_detail_page.html'));
+});
 
 
 /* GET 404 page. */
