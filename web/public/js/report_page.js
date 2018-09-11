@@ -810,7 +810,7 @@ var editableSelectApp = new Vue({
             url: '/api/medias',
         }).then(function(res){
             _self.currentMedia = res.data[0]["_id"];
-            _self.mediaList = res.data.reverse();
+            _self.mediaList = res.data;
             mediaChartsApp.initCharts();
         });
     },

@@ -141,11 +141,10 @@
 				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="editableSelect">
 					<div class="col-md-12">&nbsp;</div>
 					<div class="col-md-12">&nbsp;</div>
-					<input list="editableSelectList" v-model:value="currentMedia">
-					<datalist id="editableSelectList">
-						<option v-for="media in mediaList" class="datalist-option" v-bind:value="media._id"></option>
-					</datalist>
-					<button id="editableSelectButton" v-on:click="selectedMedia()">查询</button>
+					<el-select id="editableSelectList" v-model:value="currentMedia" class="col-md-8">
+						<el-option v-for="media in mediaList" class="datalist-option" v-bind:value="media._id"></el-option>
+					</el-select>
+					<el-button id="editableSelectButton" v-on:click="selectedMedia()" class="col-md-4">查询</el-button>
 				</div><!--/.sidebar-offcanvas-->
 
 			</div><!--/row-->
