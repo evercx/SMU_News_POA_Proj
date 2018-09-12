@@ -1,3 +1,4 @@
 {
-    "editor.matchBrackets": false
+    "editor.matchBrackets": false,
+    "python.linting.enabled": false
 }
