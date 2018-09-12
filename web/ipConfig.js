@@ -3,7 +3,7 @@
  */
 
 var IPAddress = {
-    mongodb:'mongodb://127.0.0.1:27017/NewsPOA2/'
+    mongodb:'mongodb://47.99.97.205:27034/NewsPOA/'
 };
 
 //exports.db = PSOCFI_DB;
