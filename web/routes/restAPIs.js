@@ -12,7 +12,7 @@ var newsController = require('../controllers/news_controller');
 var report_controller = require('../controllers/report_controller');
 var analyzeController  =require('../controllers/analyze_controller');
 
-mongoose.connect(ipConfig.mongodb);
+mongoose.connect(ipConfig.mongodb,{auth:{authdb:'admin'}});
 
 //接口过滤中间件,只允许GET操作,防止对数据库的修改操作
 router.use('/api/v1/*',function(req,res,next){

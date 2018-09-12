@@ -3,7 +3,8 @@
  */
 
 var IPAddress = {
-    mongodb:'mongodb://127.0.0.1:27017/NewsPOA2/'
+    // mongodb:'mongodb://iotlab:iotlabmongodb@127.0.0.1:27034/NewsPOA/'
+    mongodb:'mongodb://iotlab:iotlabmongodb@127.0.0.1:27034/NewsPOA'
 };
 
 //exports.db = PSOCFI_DB;
