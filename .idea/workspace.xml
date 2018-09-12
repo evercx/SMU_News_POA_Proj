@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5c6ab240-c6a0-44c4-bf6b-731845e5071b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/web/ipConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ipConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/public/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/home_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/nav_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/nav_top.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ipConfig.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ipConfig.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/ipConfig.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="125">
+              <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -60,11 +59,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_page.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home_page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/public/home_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+            <state relative-caret-position="175">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_top.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/public/nav_top.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+              <folding>
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,15 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
               <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="restAPIs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/routes/restAPIs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="29" column="30" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -175,8 +177,9 @@
         <option value="$PROJECT_DIR$/web/public/js/detail_page.js" />
         <option value="$PROJECT_DIR$/db_operation/add_negative_news_from_old_db.py" />
         <option value="$PROJECT_DIR$/db_operation/create_news_number_info.py" />
-        <option value="$PROJECT_DIR$/web/ipConfig.js" />
         <option value="$PROJECT_DIR$/web/public/home_page.html" />
+        <option value="$PROJECT_DIR$/web/public/nav_top.html" />
+        <option value="$PROJECT_DIR$/web/ipConfig.js" />
       </list>
     </option>
   </component>
@@ -409,8 +412,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32889965" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2159877" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.252071" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2159877" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.252071" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" />
@@ -439,7 +442,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/news_crawler/news_result/上海海事大学.json" />
     <entry file="file://$PROJECT_DIR$/news_crawler/__init__.py" />
     <entry file="file://$PROJECT_DIR$/config/__init__.py" />
     <entry file="file://$PROJECT_DIR$/crawler/news_result/上海大学.json" />
@@ -691,13 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/ipConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/public/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1380" />
@@ -705,8 +700,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/public/home_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+        <state relative-caret-position="175">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/public/nav_top.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ipConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
         </state>
       </provider>
     </entry>
