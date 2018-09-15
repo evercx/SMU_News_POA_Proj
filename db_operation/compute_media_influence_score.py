@@ -39,7 +39,7 @@ def compute_score():
             
             # sigmoid函数的变种（自制）
             weight_ranking = 2/(1+math.exp(float(news["ranking"])/100))
-            weight_date = 2/(1+math.exp(delta_days/500))
+            weight_date = 2/(1+math.exp(delta_days/200))
             if score.get(news["media"]) is not None:
                 score[news["media"]] += weight_ranking*weight_date
             else:

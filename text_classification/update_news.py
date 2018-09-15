@@ -19,8 +19,7 @@ import json
 import threading
 import time
 
-MAX_PAGE_NUMBERS = 39
-
+MAX_PAGE_NUMBERS = 2
 
 
 def connect_newslist():
@@ -161,7 +160,7 @@ def get_detail_news(result_div, id_of_news, university_name,
     if collection.find_one({"url": url}):
         collection.update_one(
             {"url": url},
-            {"$set": {"ranking": id_of_news, "visited": True}}
+            {"$set": {"ranking": id_of_news}}
         )
         print("thread" + str(id_of_news) + " of " + university_name + " is updated")
         return
@@ -187,7 +186,6 @@ def get_detail_news(result_div, id_of_news, university_name,
         "ranking": id_of_news,
         "classification": None,
         "sentiment": None,
-        "visited": True
     }
     if(filter(current_news) == "true"):
         collection.insert_one(current_news)
@@ -202,40 +200,12 @@ def save_newslist_to_db():
     
     newslist = connect_newslist()
 
-    newslist.update_many(
-        {},
-        {"$set": {"visited": False}}
-    )
-
     for i in range(0,len(university_list)):
         uni = university_list[i]
         request_baidu_news(uni["zh_name"],1,MAX_PAGE_NUMBERS,uni["en_name"],newslist)
         print(uni["zh_name"],"的新闻列表处理成功")
 
     print("新闻全部爬取完毕")
-
-
-# 惩罚本次未爬取的新闻（排名乘2）
-def punish_unvisited(): 
-    newslist = connect_newslist()
-    all_data = newslist.find({"visited": False})
-    count = all_data.count()
-    for data in all_data:
-        newslist.update_one(
-            {"_id": data["_id"]},
-            {"$set": {"ranking": int(data["ranking"])*2, "visited": True}}
-        )
-    print("共惩罚", count, "条新闻")
-
-
-# 删除排名过于靠后的新闻（ranking大于1200）
-def delete_low_ranked():
-    newslist = connect_newslist()
-    all_data = newslist.find({"ranking":{"$gt": 1200}})
-    count = all_data.count()
-    for data in all_data:
-        newslist.delete_one({"_id": data["_id"]})
-    print("已删除", count, "条低影响力新闻")
 
 
 # 对新加入的新闻进行预测
@@ -292,14 +262,8 @@ if __name__ == "__main__":
     # 1.爬取新闻
     save_newslist_to_db()
 
-    # 2.惩罚未爬取的旧闻
-    punish_unvisited()
-
-    # 3.删除排名过低的新闻
-    delete_low_ranked()
-
-    # 4.预测新加入的新闻
+    # 2.预测新加入的新闻
     predict_in_db()
 
-    # 5.重新计算媒体得分
+    # 3.重新计算媒体得分
     compute_score()
